@@ -1,0 +1,84 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+           controllerName="myui5databinding01.webapp" xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page title="Title">
+        <content>
+            <Panel headerText='No Binding' class="sapUiResponsiveMargin" width="auto">
+                <content>
+                    <Text text="hello world"/>
+                </content>
+            </Panel>
+            <Panel headerText='Property Binding' class="sapUiResponsiveMargin" width="auto">
+                <content>
+                    <Text text="{/firstName} {/lastName}"/>
+                </content>
+            </Panel>
+            <Panel headerText="{/panelHeaderText}" class="sapUiResponsiveMargin" width="auto">
+                <content>
+                    <Label text="First Name" class="sapUiSmallMargin"/>
+                    <Input value="{/firstName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/>
+                    <Label text="Last Name" class="sapUiSmallMargin"/>
+                    <Input value="{/lastName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/>
+                    <CheckBox selected="{/enabled}" text="Enabled"/>
+                </content>
+            </Panel>
+            <!-- 3. one-way binding for specific element -->
+            <Panel class="sapUiResponsiveMargin" width="auto">
+                <content>
+                    <Label text="First Name" class="sapUiSmallMargin"/>
+                    <Input value="{/firstName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/>
+                    <Label text="Last Name" class="sapUiSmallMargin"/>
+                    <Input value="{/lastName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/>
+                    <CheckBox
+                            selected="{
+      path: '{/enabled}',
+	  mode: 'sap.ui.model.BindingMode.OneWay'
+      }"
+                            text="Enabled one way"/>
+                </content>
+            </Panel>
+            <!-- Property Binding Formatting -->
+            <Panel headerText="{i18n>format}" class="sapUiResponsiveMargin" width="auto">
+                <content>
+                    <!-- 1. Formating with custom function  -->
+                    <l:VerticalLayout>
+                        <Label class="sapUiSmallMargin" text="{i18n>address}:" />
+                        <Text text="
+          {/address/street}\n{/address/zip} {/address/city}\n{/address/country}"/>
+
+                        <Image class="sapUiSmallMargin" width="500px" height="300px" src="{ parts: [ '/address/street', '/address/zip', '/address/city', '/address/country' ], formatter: '.formatMapUrl' }" />
+                    </l:VerticalLayout>
+                    <!-- 2. Formatting using data type -->
+                    <l:VerticalLayout>
+                        <Label text="{i18n>salesToDate}" class="sapUiSmallMargin" />
+                        <Input
+                                width="200px"
+                                enabled="{/enabled}"
+                                description="{/currencyCode}"
+                                value="{ parts: [{path: '/salesToDate'}, {path: '/currencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false } }"
+                        />
+                    </l:VerticalLayout>
+                </content>
+
+            </Panel>
+            <Panel headerText="{i18n>panelHeaderText}" class="sapUiResponsiveMargin" width="auto">
+                <content>
+                    <Label text="{i18n>firstName}" class="sapUiSmallMargin"/>
+                    <Input value="{/firstName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/>
+                    <Label text="{i18n>lastName}" class="sapUiSmallMargin"/>
+                    <Input value="{/lastName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/>
+                    <CheckBox selected="{/enabled}" text="{i18n>enabled}"/>
+                </content>
+            </Panel>
+            <Panel headerText="{i18n>panel2HeaderText}" class="sapUiResponsiveMargin" width="auto">
+                <content>
+                    <l:VerticalLayout>
+                        <Label class="sapUiSmallMargin" text="{i18n>address}:"/>
+                        <Text class="sapUiSmallMargin"
+                              text="{/address/street}\n{/address/zip} {/address/city}\n{/address/country}"
+                              width="200px"/>
+                    </l:VerticalLayout>
+                </content>
+            </Panel>
+        </content>
+    </Page>
+</core:View>

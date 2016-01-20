@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+    <script src="../resources/sap-ui-core.js"
+            id="sap-ui-bootstrap"
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-xx-bindingSyntax="complex"
+            data-sap-ui-resourceroots='{ "sap.ui.demo.db": "./" }'>
+    </script>
+    <!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+
+    <script>
+        sap.ui.localResources("myui5databinding01");
+
+        //set model
+        var oModel = new sap.ui.model.json.JSONModel({
+            firstName: "Ray",
+            lastName: "Lv",
+            enabled: true,
+            panelHeaderText: "Data Binding Basics",
+            address: {
+                street: "Dietmar-Hopp-Allee 16",
+                city: "Walldorf",
+                zip: "69190",
+                country: "Germany"
+            }
+        });
+        oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
+        sap.ui.getCore().setModel(oModel);
+
+        //set resource model
+        var oResourceModel = new sap.ui.model.resource.ResourceModel({
+            bundleName: "sap.ui.demo.db.i18n.i18n"
+        });
+        sap.ui.getCore().setModel(oResourceModel, "i18n");
+
+        var app = new sap.m.App({initialPage: "idwebapp1"});
+        var page = sap.ui.view({
+            id: "idwebapp1",
+            viewName: "myui5databinding01.webapp",
+            type: sap.ui.core.mvc.ViewType.XML
+        });
+        app.addPage(page);
+        app.placeAt("content");
+    </script>
+
+</head>
+<body class="sapUiBody" role="application">
+<div id="content"></div>
+</body>
+</html>

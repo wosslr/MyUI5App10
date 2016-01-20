@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="SAPUI5" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$USER_HOME$/Documents/My Work Documents/SAP_UI5_JS_CSS_HTML5/openui5-sdk-1.32.6/resources" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$USER_HOME$/Documents/My Work Documents/SAP_UI5_JS_CSS_HTML5/openui5-sdk-1.32.6/resources" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
